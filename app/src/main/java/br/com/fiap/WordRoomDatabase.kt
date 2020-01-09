@@ -1,15 +1,14 @@
-package br.com.fiap.dao
+package br.com.fiap
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import br.com.fiap.model.Word
 
-@Database(entities = [Word::class], version = 1)
+@Database(entities = [TesteTabela::class], version = 1)
 public abstract class WordRoomDatabase : RoomDatabase() {
 
-    abstract fun wordDao(): WordDao
+    abstract fun wordDao(): TesteTabelaDao
 
     companion object {
         @Volatile

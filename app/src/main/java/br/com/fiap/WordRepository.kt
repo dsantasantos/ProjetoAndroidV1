@@ -1,9 +1,9 @@
-package br.com.fiap.repository
+package br.com.fiap
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import br.com.fiap.dao.WordDao
-import br.com.fiap.model.Word
+import br.com.fiap.WordDao
+import br.com.fiap.Word
 
 class WordRepository(private val wordDao: WordDao) {
 

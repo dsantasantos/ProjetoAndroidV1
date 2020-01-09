@@ -1,14 +1,11 @@
 import androidx.room.Room
-import br.com.fiap.MainViewModel
-import br.com.fiap.WordListAdapter
-import br.com.fiap.dao.WordRoomDatabase
-import br.com.fiap.repository.WordRepository
+import br.com.fiap.*
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val repositoryModule = module {
     single {
-        WordRepository(get())
+        TesteTabelaRepository(get())
     }
 }
 val dbModule = module {
@@ -16,7 +13,7 @@ val dbModule = module {
         Room.databaseBuilder(
             get(),
             WordRoomDatabase::class.java,
-            "Word_database"
+            "Word_database2"
         ).build()
     }
 

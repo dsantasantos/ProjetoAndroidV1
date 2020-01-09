@@ -1,7 +1,22 @@
 <resources>
-    <string name="app_name">RoomExample</string>
     <string name="action_settings">Settings</string>
     <string name="hint_word">Word...</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="app_name">Consultoria CNH Brasil</string>
+    <string name="main_title">CCB - Consultoria ©</string>
+    <string name="main_subtitle">Evite dor de cabeça, resolva sua CNH.</string>
+    <string name="login_title">Iniciar Sessão</string>
+    <string name="cadastro_cnh_title">Cadastrar CNH</string>
+    <string name="suspensao_cnh_title">Cadastrar Suspensão</string>
+    <string name="cadastro_usuario_title">Cadastrar Usuário</string>
+    <string name="button_new_game">Novo Jogo</string>
+    <string name="button_cadastro_cnh">Cadastrar CNH</string>
+    <string name="button_salvar_cnh">Salvar</string>
+    <string name="button_cadastro_suspensao">Inserir Suspensão</string>
+    <string name="button_login_entrar">Entrar</string>
+    <string name="button_login_cadastrar">Cadastrar</string>
+    <string name="button_usuario_cadastrar">Cadastrar</string>
+    <string name="button_sair">Sair</string>
+    <string name="developed_by">Desenvolvido por Danilo</string>
 </resources>

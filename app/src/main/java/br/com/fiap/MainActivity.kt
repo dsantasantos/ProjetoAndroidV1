@@ -3,19 +3,12 @@ package br.com.fiap
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import br.com.fiap.MainViewModel
-import br.com.fiap.NewWordActivity
-import br.com.fiap.R
-import br.com.fiap.WordListAdapter
-import br.com.fiap.model.Word
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -33,6 +26,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
+        button2.setOnClickListener {
+            startActivity(Intent(this, CadastroCnhActivity::class.java))
+        }
+
         setUpList()
 
         mainViewModel.allWords.observe(this, Observer { words ->
@@ -41,8 +38,9 @@ class MainActivity : AppCompatActivity() {
         })
 
         fab.setOnClickListener { view ->
-            val intent = Intent(this@MainActivity, NewWordActivity::class.java)
-            startActivityForResult(intent, newWordActivityRequestCode)
+            //val intent = Intent(this@MainActivity, NewWordActivity::class.java)
+            //startActivityForResult(intent, newWordActivityRequestCode)
+            startActivity(Intent(this, CadastroCnhActivity::class.java))
         }
     }
 
@@ -72,8 +70,8 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             data?.let {
-                val word = Word(it.getStringExtra(NewWordActivity.EXTRA_REPLY))
-                mainViewModel.insert(word)
+               // val word = TesteTabela(it.getStringExtra(NewWordActivity.EXTRA_REPLY))
+               // mainViewModel.insert(word)
             }
         } else {
             Toast.makeText(

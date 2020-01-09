@@ -1,11 +1,10 @@
-package br.com.fiap.dao
+package br.com.fiap
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import br.com.fiap.model.Word
 
 @Dao
 interface WordDao {

@@ -3,5 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorTextButton">#2E5D7B</color>
+    <color name="colorBgButton">#FFF</color>
+    <color name="colorBgButtonPressed">#EEE</color>
+    <color name="mainLogoColor">#87CEFA</color>
+    <color name="mainSubTitleColor">#4682B4</color>
     <color name="buttonLabel">#d3d3d3</color>
 </resources>

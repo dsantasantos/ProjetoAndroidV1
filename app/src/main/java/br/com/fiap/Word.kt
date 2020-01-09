@@ -1,4 +1,4 @@
-package br.com.fiap.model
+package br.com.fiap
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
