@@ -15,6 +15,12 @@ interface TesteTabelaDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(testeTabela: TesteTabela)
 
+    @Query("DELETE FROM teste_tabela WHERE numero_cnh = :id")
+    fun deleteById(id: String)
+
+    @Query("UPDATE teste_tabela SET nome_completo=:nomeCompleto, data_nascimento=:dataNascimento, data_cnh=:dataCnh, data_venc_cnh=:dataVencCnh WHERE numero_cnh = :id")
+    fun update(id: String, nomeCompleto: String, dataNascimento: Long, dataCnh: Long, dataVencCnh: Long)
+
     @Query("DELETE FROM teste_tabela")
     fun deleteAll()
 }

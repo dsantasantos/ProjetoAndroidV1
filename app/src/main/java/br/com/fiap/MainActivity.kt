@@ -30,6 +30,18 @@ class MainActivity : AppCompatActivity(), WordListAdapter.OnItemClickListener {
         intent.putExtra("data_cnh", format.format(objeto.dataCnh))
         intent.putExtra("data_venc_cnh", format.format(objeto.dataVencCnh))
 
+        //mainViewModel.deleteById("2222")
+
+        /*
+        mainViewModel.update(
+            objeto.numeroCnh,
+            "diferente",
+            objeto.dataNascimento,
+            objeto.dataCnh,
+            objeto.dataVencCnh
+        )
+         */
+
         startActivity(intent)
         //finish()
     }
