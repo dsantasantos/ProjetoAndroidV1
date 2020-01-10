@@ -1,6 +1,5 @@
 package br.com.fiap
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -13,8 +12,10 @@ import java.text.SimpleDateFormat
 class CadastroCnhActivity : AppCompatActivity() {
 
     private lateinit var editNomeCompleto: EditText
+    private lateinit var editDataNascimento: EditText
     private lateinit var editNumeroCnh: EditText
-
+    private lateinit var editDataCnh: EditText
+    private lateinit var editDataCnhVenc: EditText
 
     private val mainViewModel: MainViewModel by viewModel()
 
@@ -23,18 +24,22 @@ class CadastroCnhActivity : AppCompatActivity() {
         setContentView(R.layout.activity_cadastro_cnh)
 
         editNomeCompleto = findViewById(R.id.inputNomeCompleto)
+        editDataNascimento = findViewById(R.id.inputDataNascimento)
         editNumeroCnh = findViewById(R.id.inputNumeroCnh)
+        editDataCnh = findViewById(R.id.inputDataCnh)
+        editDataCnhVenc = findViewById(R.id.inputVencimento)
 
         val button = findViewById<Button>(R.id.btSalvarCnh)
 
         button.setOnClickListener {
 
-            if (TextUtils.isEmpty(editNomeCompleto.text)) {
-                Toast.makeText(
-                    applicationContext,
-                    R.string.empty_not_saved,
-                    Toast.LENGTH_LONG).show()
-            } else {
+            if (campoPreenchido(editNomeCompleto, "Nome Completo")
+                && campoPreenchido(editDataNascimento, "Data Nascimento")
+                && campoPreenchido(editNumeroCnh, "Numero CNH")
+                && campoPreenchido(editDataCnh, "Data CNH")
+                && campoPreenchido(editDataCnhVenc, "Data CNH Vencimento")
+            ) {
+
                 val word = editNomeCompleto.text.toString()
                 val numeroCnh = editNumeroCnh.text.toString()
                 //replyIntent.putExtra(EXTRA_REPLY, word)
@@ -44,12 +49,22 @@ class CadastroCnhActivity : AppCompatActivity() {
 
                 val objeto = TesteTabela(word, longTeste)
                 mainViewModel.insert(objeto)
-            }
 
-            finish()
+                finish()
+            }
         }
     }
 
+    fun campoPreenchido(campo: EditText, b: String): Boolean {
+
+        if (TextUtils.isEmpty(campo.text)) {
+            Toast.makeText(applicationContext, "O campo $b não está preenchido", Toast.LENGTH_LONG)
+                .show()
+            return false
+        }
+
+        return true
+    }
 
 
     companion object {

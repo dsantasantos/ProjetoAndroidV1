@@ -29,7 +29,7 @@ class WordListAdapter internal constructor(
         val current = testes[position]
 
         val date = Date(current.firstName)
-        val format = SimpleDateFormat("yyyy.MM.dd HH:mm")
+        val format = SimpleDateFormat("dd/MM/yyyy")
 
 
         holder.wordItemView.text = format.format(date)
