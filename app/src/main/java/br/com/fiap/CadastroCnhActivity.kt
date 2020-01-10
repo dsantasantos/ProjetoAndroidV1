@@ -40,14 +40,17 @@ class CadastroCnhActivity : AppCompatActivity() {
                 && campoPreenchido(editDataCnhVenc, "Data CNH Vencimento")
             ) {
 
-                val word = editNomeCompleto.text.toString()
-                val numeroCnh = editNumeroCnh.text.toString()
-                //replyIntent.putExtra(EXTRA_REPLY, word)
+                val df = SimpleDateFormat("dd/MM/yyyy")
 
-                val df = SimpleDateFormat("yyyy/MM/dd")
-                val longTeste = df.parse("2019/05/05").time
+                var nomeCompleto = editNomeCompleto.text.toString()
+                var dataNascimento = df.parse(editDataNascimento.text.toString()).time
+                var numeroCnh = editNumeroCnh.text.toString()
+                var dataCnh = df.parse(editDataCnh.text.toString()).time
+                var dataVencCnh = df.parse(editDataCnhVenc.text.toString()).time
 
-                val objeto = TesteTabela(word, longTeste)
+                val objeto =
+                    TesteTabela(nomeCompleto, dataNascimento, numeroCnh, dataCnh, dataVencCnh)
+
                 mainViewModel.insert(objeto)
 
                 finish()

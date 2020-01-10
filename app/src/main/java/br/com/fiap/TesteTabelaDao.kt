@@ -9,7 +9,7 @@ import androidx.room.Query
 @Dao
 interface TesteTabelaDao {
 
-    @Query("SELECT * from teste_tabela ORDER BY campo ASC")
+    @Query("SELECT * from teste_tabela ORDER BY data_venc_cnh DESC")
     fun getAllWords(): LiveData<List<TesteTabela>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

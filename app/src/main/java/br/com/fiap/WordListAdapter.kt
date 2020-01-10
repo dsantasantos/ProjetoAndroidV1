@@ -28,11 +28,11 @@ class WordListAdapter internal constructor(
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = testes[position]
 
-        val date = Date(current.firstName)
+        val dataVencimento = Date(current.dataVencCnh)
         val format = SimpleDateFormat("dd/MM/yyyy")
+        val dataVencimentoFormatada = format.format(dataVencimento)
 
-
-        holder.wordItemView.text = format.format(date)
+        holder.wordItemView.text = "${current.nomeCompleto} - Venc.: $dataVencimentoFormatada"
         //holder.wordItemView.text = current.firstName
     }
 
