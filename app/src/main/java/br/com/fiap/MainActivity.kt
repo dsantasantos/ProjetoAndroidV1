@@ -26,10 +26,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        button2.setOnClickListener {
-            startActivity(Intent(this, CadastroCnhActivity::class.java))
-        }
-
         setUpList()
 
         mainViewModel.allWords.observe(this, Observer { words ->
