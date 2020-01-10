@@ -10,11 +10,17 @@ import java.sql.Date
 import java.text.SimpleDateFormat
 
 class WordListAdapter internal constructor(
-    context: Context
+    context: Context, private val mListener: OnItemClickListener?
 ) : RecyclerView.Adapter<WordListAdapter.WordViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var testes = emptyList<TesteTabela>() // Cached copy of words
+
+    private var onItemClickListener: OnItemClickListener? = null
+
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.onItemClickListener = onItemClickListener
+    }
 
     inner class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val wordItemView: TextView = itemView.findViewById(R.id.textView)
@@ -32,7 +38,13 @@ class WordListAdapter internal constructor(
         val format = SimpleDateFormat("dd/MM/yyyy")
         val dataVencimentoFormatada = format.format(dataVencimento)
 
-        holder.wordItemView.text = "${current.nomeCompleto} - Vencimento: $dataVencimentoFormatada"
+        val texto = "${current.nomeCompleto} - Vencimento: $dataVencimentoFormatada"
+        holder.wordItemView.text = texto
+
+        holder.wordItemView.setOnClickListener {
+            mListener?.onItemClick(texto, testes[position])
+        }
+
         //holder.wordItemView.text = current.firstName
     }
 
@@ -41,5 +53,12 @@ class WordListAdapter internal constructor(
         notifyDataSetChanged()
     }
 
+
     override fun getItemCount() = testes.size
+
+    interface OnItemClickListener {
+        fun onItemClick(texto: String, objeto: TesteTabela)
+    }
+
+
 }

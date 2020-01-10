@@ -12,21 +12,37 @@ import androidx.recyclerview.widget.LinearLayoutManager
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), WordListAdapter.OnItemClickListener {
 
     private val mainViewModel: MainViewModel by viewModel()
 
-    private val adapter: WordListAdapter by inject()
+    override fun onItemClick(texto: String, objeto: TesteTabela) {
+
+        val format = SimpleDateFormat("dd/MM/yyyy")
+
+        val intent = Intent(this, CadastroCnhActivity::class.java)
+        intent.putExtra("nome_completo", objeto.nomeCompleto)
+        intent.putExtra("data_nascimento", format.format(objeto.dataNascimento))
+        intent.putExtra("numero_cnh", objeto.numeroCnh)
+        intent.putExtra("data_cnh", format.format(objeto.dataCnh))
+        intent.putExtra("data_venc_cnh", format.format(objeto.dataVencCnh))
+
+        startActivity(intent)
+        //finish()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        val adapter = WordListAdapter(this, this)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        setUpList()
+        setUpList(adapter)
 
         mainViewModel.allWords.observe(this, Observer { words ->
             // Update the cached copy of the words in the adapter.
@@ -40,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpList() {
+    private fun setUpList(adapter: WordListAdapter) {
         recyclerview.adapter = adapter
         recyclerview.layoutManager = LinearLayoutManager(this)
     }
@@ -66,16 +82,18 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             data?.let {
-               // val word = TesteTabela(it.getStringExtra(NewWordActivity.EXTRA_REPLY))
-               // mainViewModel.insert(word)
+                // val word = TesteTabela(it.getStringExtra(NewWordActivity.EXTRA_REPLY))
+                // mainViewModel.insert(word)
             }
         } else {
             Toast.makeText(
                 applicationContext,
                 R.string.empty_not_saved,
-                Toast.LENGTH_LONG).show()
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
+
     companion object {
         const val newWordActivityRequestCode = 1
     }

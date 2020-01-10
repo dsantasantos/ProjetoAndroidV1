@@ -25,6 +25,8 @@ val viewModelModule = module {
     viewModel { MainViewModel(get(), get()) }
 }
 
+/*
 val uiModule = module {
     factory { WordListAdapter(get()) }
 }
+ */

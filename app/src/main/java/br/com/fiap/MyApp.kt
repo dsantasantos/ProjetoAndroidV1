@@ -7,7 +7,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import repositoryModule
-import uiModule
 import viewModelModule
 
 class MyApp : Application() {
@@ -25,7 +24,7 @@ class MyApp : Application() {
             modules(
                 listOf(
                     viewModelModule,
-                    uiModule,
+                    //uiModule,
                     dbModule,
                     repositoryModule
                 )

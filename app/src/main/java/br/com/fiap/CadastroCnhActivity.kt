@@ -29,6 +29,12 @@ class CadastroCnhActivity : AppCompatActivity() {
         editDataCnh = findViewById(R.id.inputDataCnh)
         editDataCnhVenc = findViewById(R.id.inputVencimento)
 
+        editNomeCompleto.setText(intent.getStringExtra("nome_completo"))
+        editDataNascimento.setText(intent.getStringExtra("data_nascimento"))
+        editNumeroCnh.setText(intent.getStringExtra("numero_cnh"))
+        editDataCnh.setText(intent.getStringExtra("data_cnh"))
+        editDataCnhVenc.setText(intent.getStringExtra("data_venc_cnh"))
+
         val button = findViewById<Button>(R.id.btSalvarCnh)
 
         button.setOnClickListener {
