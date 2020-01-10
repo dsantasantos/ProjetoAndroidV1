@@ -32,7 +32,7 @@ class WordListAdapter internal constructor(
         val format = SimpleDateFormat("dd/MM/yyyy")
         val dataVencimentoFormatada = format.format(dataVencimento)
 
-        holder.wordItemView.text = "${current.nomeCompleto} - Venc.: $dataVencimentoFormatada"
+        holder.wordItemView.text = "${current.nomeCompleto} - Vencimento: $dataVencimentoFormatada"
         //holder.wordItemView.text = current.firstName
     }
 
