@@ -8,7 +8,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -64,8 +66,32 @@ class MainActivity : AppCompatActivity(), WordListAdapter.OnItemClickListener {
         fab.setOnClickListener { view ->
             //val intent = Intent(this@MainActivity, NewWordActivity::class.java)
             //startActivityForResult(intent, newWordActivityRequestCode)
-            startActivity(Intent(this, CadastroCnhActivity::class.java))
+            val intent = Intent(this, CadastroCnhActivity::class.java)
+
+            intent.putExtra("numero_cnh", "")
+            startActivity(intent)
         }
+
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                val id = adapter.getId(viewHolder.adapterPosition)
+                mainViewModel.deleteById(id)
+                (adapter as WordListAdapter).removeItem(viewHolder)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerview)
+
     }
 
     private fun setUpList(adapter: WordListAdapter) {

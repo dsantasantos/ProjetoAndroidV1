@@ -29,11 +29,19 @@ class CadastroCnhActivity : AppCompatActivity() {
         editDataCnh = findViewById(R.id.inputDataCnh)
         editDataCnhVenc = findViewById(R.id.inputVencimento)
 
+        val numeroCnh = intent.getStringExtra("numero_cnh")
+
         editNomeCompleto.setText(intent.getStringExtra("nome_completo"))
         editDataNascimento.setText(intent.getStringExtra("data_nascimento"))
-        editNumeroCnh.setText(intent.getStringExtra("numero_cnh"))
+        editNumeroCnh.setText(numeroCnh)
         editDataCnh.setText(intent.getStringExtra("data_cnh"))
         editDataCnhVenc.setText(intent.getStringExtra("data_venc_cnh"))
+
+        if (numeroCnh != "") {
+            editNumeroCnh.setEnabled(false)
+        } else {
+            editNumeroCnh.setEnabled(true)
+        }
 
         val button = findViewById<Button>(R.id.btSalvarCnh)
 
@@ -57,7 +65,19 @@ class CadastroCnhActivity : AppCompatActivity() {
                 val objeto =
                     TesteTabela(nomeCompleto, dataNascimento, numeroCnh, dataCnh, dataVencCnh)
 
-                mainViewModel.insert(objeto)
+                if (editNumeroCnh.isEnabled) {
+                    mainViewModel.insert(objeto)
+                } else {
+                    mainViewModel.update(
+                        objeto.numeroCnh,
+                        objeto.nomeCompleto,
+                        objeto.dataNascimento,
+                        objeto.dataCnh,
+                        objeto.dataVencCnh
+                    )
+                }
+
+
 
                 finish()
             }

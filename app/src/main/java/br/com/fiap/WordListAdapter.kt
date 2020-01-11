@@ -32,7 +32,10 @@ class WordListAdapter internal constructor(
     }
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
+
+
         val current = testes[position]
+
 
         val dataVencimento = Date(current.dataVencCnh)
         val format = SimpleDateFormat("dd/MM/yyyy")
@@ -58,6 +61,15 @@ class WordListAdapter internal constructor(
 
     interface OnItemClickListener {
         fun onItemClick(texto: String, objeto: TesteTabela)
+    }
+
+    fun removeItem(viewHolder: RecyclerView.ViewHolder) {
+        this.testes = this.testes.drop(viewHolder.adapterPosition)
+        notifyItemRemoved(viewHolder.adapterPosition)
+    }
+
+    fun getId(position: Int): String {
+        return testes[position].numeroCnh
     }
 
 
