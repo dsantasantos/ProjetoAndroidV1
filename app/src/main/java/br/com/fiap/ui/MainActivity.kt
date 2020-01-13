@@ -1,6 +1,7 @@
 package br.com.fiap.ui
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.fiap.R
@@ -15,6 +16,11 @@ class MainActivity : AppCompatActivity() {
         navigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.novo_cnh -> {
+
+                    //val uri = Uri.parse("tel:"+ "945484554")
+                    //val intent = Intent(Intent.ACTION_DIAL,uri);
+                    //startActivity(intent);
+
                     val nextScreen = Intent(this, CadastroCnhActivity::class.java)
                     nextScreen.putExtra("numero_cnh", "")
                     startActivity(nextScreen)

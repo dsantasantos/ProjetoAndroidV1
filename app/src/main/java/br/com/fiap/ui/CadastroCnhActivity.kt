@@ -20,6 +20,7 @@ class CadastroCnhActivity : AppCompatActivity() {
     private lateinit var editNumeroCnh: EditText
     private lateinit var editDataCnh: EditText
     private lateinit var editDataCnhVenc: EditText
+    private lateinit var editTelefone: EditText
 
     private val mainViewModel: MainViewModel by viewModel()
 
@@ -36,6 +37,7 @@ class CadastroCnhActivity : AppCompatActivity() {
         editNumeroCnh = findViewById(R.id.inputNumeroCnh)
         editDataCnh = findViewById(R.id.inputDataCnh)
         editDataCnhVenc = findViewById(R.id.inputVencimento)
+        editTelefone = findViewById(R.id.inputTelefone)
 
         val numeroCnh = intent.getStringExtra("numero_cnh")
 
@@ -44,6 +46,7 @@ class CadastroCnhActivity : AppCompatActivity() {
         editNumeroCnh.setText(numeroCnh)
         editDataCnh.setText(intent.getStringExtra("data_cnh"))
         editDataCnhVenc.setText(intent.getStringExtra("data_venc_cnh"))
+        editTelefone.setText(intent.getStringExtra("telefone"))
 
         if (numeroCnh != "") {
             editNumeroCnh.setEnabled(false)
@@ -60,6 +63,7 @@ class CadastroCnhActivity : AppCompatActivity() {
                 && campoPreenchido(editNumeroCnh, "Numero CNH")
                 && campoPreenchido(editDataCnh, "Data CNH")
                 && campoPreenchido(editDataCnhVenc, "Data CNH Vencimento")
+                && campoPreenchido(editTelefone, "Telefone")
             ) {
 
                 val df = SimpleDateFormat("dd/MM/yyyy")
@@ -69,6 +73,7 @@ class CadastroCnhActivity : AppCompatActivity() {
                 var numeroCnh = editNumeroCnh.text.toString()
                 var dataCnh = df.parse(editDataCnh.text.toString()).time
                 var dataVencCnh = df.parse(editDataCnhVenc.text.toString()).time
+                var telefone = editTelefone.text.toString()
 
                 val objeto =
                     Cnh(
@@ -76,7 +81,8 @@ class CadastroCnhActivity : AppCompatActivity() {
                         dataNascimento,
                         numeroCnh,
                         dataCnh,
-                        dataVencCnh
+                        dataVencCnh,
+                        telefone
                     )
 
                 if (editNumeroCnh.isEnabled) {
@@ -87,7 +93,8 @@ class CadastroCnhActivity : AppCompatActivity() {
                         objeto.nomeCompleto,
                         objeto.dataNascimento,
                         objeto.dataCnh,
-                        objeto.dataVencCnh
+                        objeto.dataVencCnh,
+                        objeto.telefone
                     )
                 }
 

@@ -29,9 +29,10 @@ class MainViewModel(
         nomeCompleto: String,
         dataNascimento: Long,
         dataCnh: Long,
-        dataVencCnh: Long
+        dataVencCnh: Long,
+        telefone: String
     ) = viewModelScope.launch(Dispatchers.IO) {
-        cnhRepository.update(id, nomeCompleto, dataNascimento, dataCnh, dataVencCnh)
+        cnhRepository.update(id, nomeCompleto, dataNascimento, dataCnh, dataVencCnh, telefone)
     }
 }
 

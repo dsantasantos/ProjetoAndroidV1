@@ -144,16 +144,37 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDataVencimento" />
 
+
+    <TextView
+            android:id="@+id/txtTelefone"
+            style="@style/txt_padrao_form"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:text="Telefone:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/inputVencimento" />
+
+    <EditText
+            android:id="@+id/inputTelefone"
+            style="@style/input_padrao_form"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:hint="Telefone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTelefone" />
+
     <Button
             android:id="@+id/btSalvarCnh"
             style="@style/custom_button"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="24dp"
             android:text="@string/button_login_cadastrar"
             android:textSize="@dimen/text_button_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputVencimento" />
+            app:layout_constraintTop_toBottomOf="@+id/inputTelefone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

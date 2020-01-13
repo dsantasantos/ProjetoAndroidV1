@@ -33,6 +33,7 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
         intent.putExtra("numero_cnh", objeto.numeroCnh)
         intent.putExtra("data_cnh", format.format(objeto.dataCnh))
         intent.putExtra("data_venc_cnh", format.format(objeto.dataVencCnh))
+        intent.putExtra("telefone", objeto.telefone)
 
         startActivity(intent)
     }

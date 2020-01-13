@@ -19,8 +19,8 @@ interface CnhDao {
     @Query("DELETE FROM cnh WHERE numero_cnh = :id")
     fun deleteById(id: String)
 
-    @Query("UPDATE cnh SET nome_completo=:nomeCompleto, data_nascimento=:dataNascimento, data_cnh=:dataCnh, data_venc_cnh=:dataVencCnh WHERE numero_cnh = :id")
-    fun update(id: String, nomeCompleto: String, dataNascimento: Long, dataCnh: Long, dataVencCnh: Long)
+    @Query("UPDATE cnh SET nome_completo=:nomeCompleto, data_nascimento=:dataNascimento, data_cnh=:dataCnh, data_venc_cnh=:dataVencCnh, telefone=:telefone WHERE numero_cnh = :id")
+    fun update(id: String, nomeCompleto: String, dataNascimento: Long, dataCnh: Long, dataVencCnh: Long, telefone: String)
 
     @Query("DELETE FROM cnh")
     fun deleteAll()

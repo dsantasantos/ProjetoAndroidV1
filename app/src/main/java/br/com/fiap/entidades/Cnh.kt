@@ -11,5 +11,6 @@ class Cnh(
     @ColumnInfo(name = "data_nascimento") val dataNascimento: Long,
     @PrimaryKey @ColumnInfo(name = "numero_cnh") val numeroCnh: String,
     @ColumnInfo(name = "data_cnh") val dataCnh: Long,
-    @ColumnInfo(name = "data_venc_cnh") val dataVencCnh: Long
+    @ColumnInfo(name = "data_venc_cnh") val dataVencCnh: Long,
+    @ColumnInfo(name = "telefone") val telefone: String
 )
