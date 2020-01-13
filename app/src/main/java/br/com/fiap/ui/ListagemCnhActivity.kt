@@ -57,6 +57,10 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
             startActivity(intent)
         }
 
+        ivVoltar.setOnClickListener {
+            onBackPressed()
+        }
+
         val itemTouchHelperCallback =
             object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
                 override fun onMove(

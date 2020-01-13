@@ -9,6 +9,7 @@ import android.widget.Toast
 import br.com.fiap.R
 import br.com.fiap.entidades.Cnh
 import br.com.fiap.viewmodel.MainViewModel
+import kotlinx.android.synthetic.main.activity_cadastro_cnh.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 
@@ -25,6 +26,10 @@ class CadastroCnhActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_cnh)
+
+        ivVoltar.setOnClickListener {
+            onBackPressed()
+        }
 
         editNomeCompleto = findViewById(R.id.inputNomeCompleto)
         editDataNascimento = findViewById(R.id.inputDataNascimento)

@@ -7,6 +7,17 @@
         android:background="@drawable/background2"
         tools:context=".ui.CadastroCnhActivity">
 
+    <ImageView
+            android:id="@+id/ivVoltar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
