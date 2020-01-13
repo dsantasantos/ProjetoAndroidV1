@@ -1,4 +1,4 @@
-package br.com.fiap
+package br.com.fiap.ui
 
 import android.app.Activity
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
+import br.com.fiap.R
 
 class NewWordActivity : AppCompatActivity() {
 

@@ -15,7 +15,7 @@
     <string name="button_salvar_cnh">Salvar</string>
     <string name="button_cadastro_suspensao">Inserir Suspensão</string>
     <string name="button_login_entrar">Entrar</string>
-    <string name="button_login_cadastrar">Cadastrar</string>
+    <string name="button_login_cadastrar">Salvar</string>
     <string name="button_usuario_cadastrar">Cadastrar</string>
     <string name="button_sair">Sair</string>
     <string name="developed_by">Desenvolvido por Danilo</string>

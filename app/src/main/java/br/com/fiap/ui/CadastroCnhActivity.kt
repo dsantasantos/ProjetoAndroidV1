@@ -1,4 +1,4 @@
-package br.com.fiap
+package br.com.fiap.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,9 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import br.com.fiap.R
+import br.com.fiap.entidades.Cnh
+import br.com.fiap.viewmodel.MainViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 
@@ -63,7 +66,13 @@ class CadastroCnhActivity : AppCompatActivity() {
                 var dataVencCnh = df.parse(editDataCnhVenc.text.toString()).time
 
                 val objeto =
-                    TesteTabela(nomeCompleto, dataNascimento, numeroCnh, dataCnh, dataVencCnh)
+                    Cnh(
+                        nomeCompleto,
+                        dataNascimento,
+                        numeroCnh,
+                        dataCnh,
+                        dataVencCnh
+                    )
 
                 if (editNumeroCnh.isEnabled) {
                     mainViewModel.insert(objeto)

@@ -1,20 +1,22 @@
-package br.com.fiap
+package br.com.fiap.dados
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import br.com.fiap.dados.repositorios.CnhDao
+import br.com.fiap.entidades.Cnh
 
-@Database(entities = [TesteTabela::class], version = 1)
-public abstract class WordRoomDatabase : RoomDatabase() {
+@Database(entities = [Cnh::class], version = 1)
+public abstract class CnhRoomDatabase : RoomDatabase() {
 
-    abstract fun wordDao(): TesteTabelaDao
+    abstract fun cnhDao(): CnhDao
 
     companion object {
         @Volatile
-        private var INSTANCE: WordRoomDatabase? = null
+        private var INSTANCE: CnhRoomDatabase? = null
 
-        fun getDatabase(context: Context): WordRoomDatabase {
+        fun getDatabase(context: Context): CnhRoomDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -22,8 +24,8 @@ public abstract class WordRoomDatabase : RoomDatabase() {
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    WordRoomDatabase::class.java,
-                    "Word_database"
+                    CnhRoomDatabase::class.java,
+                    "Cnh_database"
                 ).build()
                 INSTANCE = instance
                 return instance

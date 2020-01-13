@@ -9,7 +9,7 @@ import org.koin.core.context.startKoin
 import repositoryModule
 import viewModelModule
 
-class MyApp : Application() {
+class MinhaAplicacao : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -20,7 +20,7 @@ class MyApp : Application() {
 
         startKoin {
             androidLogger()
-            androidContext(this@MyApp)
+            androidContext(this@MinhaAplicacao)
             modules(
                 listOf(
                     viewModelModule,
