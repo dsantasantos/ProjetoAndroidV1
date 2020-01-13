@@ -45,6 +45,15 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
         startActivity(intent);
     }
 
+    override fun onCompartilharClick(texto: String, objeto: Cnh) {
+        val sendIntent =  Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        val textoCompartilhado = "Nome: ${objeto.nomeCompleto} - CNH: ${objeto.numeroCnh} - Telefone: ${objeto.nomeCompleto}"
+        sendIntent.putExtra(Intent.EXTRA_TEXT, textoCompartilhado);
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val adapter = CnhListAdapter(this, this)

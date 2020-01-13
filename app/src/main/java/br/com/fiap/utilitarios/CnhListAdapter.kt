@@ -22,6 +22,7 @@ class CnhListAdapter internal constructor(
     interface OnItemClickListener {
         fun onItemClick(texto: String, objeto: Cnh)
         fun onTelefoneClick(texto: String, objeto: Cnh)
+        fun onCompartilharClick(texto: String, objeto: Cnh)
     }
 
     private var onItemClickListener: OnItemClickListener? = null
@@ -33,6 +34,7 @@ class CnhListAdapter internal constructor(
     inner class CnhViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cnhItemView: TextView = itemView.findViewById(R.id.textView)
         val telefoneImageView: ImageView = itemView.findViewById(R.id.imageView)
+        val compartilharImageView: ImageView = itemView.findViewById(R.id.imageView2)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CnhViewHolder {
@@ -57,6 +59,10 @@ class CnhListAdapter internal constructor(
 
         holder.telefoneImageView.setOnClickListener {
             mListener?.onTelefoneClick(texto, testes[position])
+        }
+
+        holder.compartilharImageView.setOnClickListener {
+            mListener?.onCompartilharClick(texto, testes[position])
         }
 
     }
