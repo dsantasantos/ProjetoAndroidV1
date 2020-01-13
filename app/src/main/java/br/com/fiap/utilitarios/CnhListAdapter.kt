@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fiap.R
@@ -18,6 +19,11 @@ class CnhListAdapter internal constructor(
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var testes = emptyList<Cnh>()
 
+    interface OnItemClickListener {
+        fun onItemClick(texto: String, objeto: Cnh)
+        fun onTelefoneClick(texto: String, objeto: Cnh)
+    }
+
     private var onItemClickListener: OnItemClickListener? = null
 
     fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
@@ -26,6 +32,7 @@ class CnhListAdapter internal constructor(
 
     inner class CnhViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cnhItemView: TextView = itemView.findViewById(R.id.textView)
+        val telefoneImageView: ImageView = itemView.findViewById(R.id.imageView)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CnhViewHolder {
@@ -47,6 +54,11 @@ class CnhListAdapter internal constructor(
         holder.cnhItemView.setOnClickListener {
             mListener?.onItemClick(texto, testes[position])
         }
+
+        holder.telefoneImageView.setOnClickListener {
+            mListener?.onTelefoneClick(texto, testes[position])
+        }
+
     }
 
     internal fun setCnhs(testes: List<Cnh>) {
@@ -55,10 +67,6 @@ class CnhListAdapter internal constructor(
     }
 
     override fun getItemCount() = testes.size
-
-    interface OnItemClickListener {
-        fun onItemClick(texto: String, objeto: Cnh)
-    }
 
     fun removeItem(viewHolder: RecyclerView.ViewHolder) {
         this.testes = this.testes.drop(viewHolder.adapterPosition)

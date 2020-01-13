@@ -1,6 +1,7 @@
 package br.com.fiap.ui
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
@@ -36,6 +37,12 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
         intent.putExtra("telefone", objeto.telefone)
 
         startActivity(intent)
+    }
+
+    override fun onTelefoneClick(texto: String, objeto: Cnh) {
+        val uri = Uri.parse("tel:"+ objeto.telefone)
+        val intent = Intent(Intent.ACTION_DIAL,uri);
+        startActivity(intent);
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
