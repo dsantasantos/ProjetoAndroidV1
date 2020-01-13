@@ -64,4 +64,5 @@ dependencies {
     implementation 'org.koin:koin-android-viewmodel:2.0.1'
 
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+
 }

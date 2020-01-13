@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/novo_cnh"
+            android:icon="@drawable/ic_save_black_24dp"
+            android:title="Nova" />
+
+    <item
+            android:id="@+id/listagem_cnh"
+            android:icon="@drawable/ic_dehaze_black_24dp"
+            android:title="Listagem" />
+
+    <item
+            android:id="@+id/sobre"
+            android:icon="@drawable/ic_announcement_black_24dp"
+            android:title="Sobre" />
+
+</menu>

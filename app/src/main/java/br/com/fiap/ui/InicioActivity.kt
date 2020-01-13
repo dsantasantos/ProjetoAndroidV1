@@ -13,7 +13,7 @@ class InicioActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inicio)
 
         Handler().postDelayed({
-            val intent = Intent(this, ListagemCnhActivity::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }, 5000L)
