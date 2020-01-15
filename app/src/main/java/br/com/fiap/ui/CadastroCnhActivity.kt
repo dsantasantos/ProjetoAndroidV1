@@ -6,8 +6,10 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 import br.com.fiap.R
 import br.com.fiap.entidades.Cnh
+import br.com.fiap.viewmodel.CnhViewModel
 import br.com.fiap.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_cadastro_cnh.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -23,14 +25,18 @@ class CadastroCnhActivity : AppCompatActivity() {
     private lateinit var editTelefone: EditText
 
     private val mainViewModel: MainViewModel by viewModel()
+    private lateinit var cnhViewModel: CnhViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_cnh)
 
         ivVoltar.setOnClickListener {
             onBackPressed()
         }
+
+        initViewModel()
 
         editNomeCompleto = findViewById(R.id.inputNomeCompleto)
         editDataNascimento = findViewById(R.id.inputDataNascimento)
@@ -39,16 +45,14 @@ class CadastroCnhActivity : AppCompatActivity() {
         editDataCnhVenc = findViewById(R.id.inputVencimento)
         editTelefone = findViewById(R.id.inputTelefone)
 
-        val numeroCnh = intent.getStringExtra("numero_cnh")
+        editNomeCompleto.setText(cnhViewModel.nomeCompleto)
+        editDataNascimento.setText(cnhViewModel.dataNascimento)
+        editNumeroCnh.setText(cnhViewModel.numeroCnh)
+        editDataCnh.setText(cnhViewModel.dataCnh)
+        editDataCnhVenc.setText(cnhViewModel.dataVencCnh)
+        editTelefone.setText(cnhViewModel.telefone)
 
-        editNomeCompleto.setText(intent.getStringExtra("nome_completo"))
-        editDataNascimento.setText(intent.getStringExtra("data_nascimento"))
-        editNumeroCnh.setText(numeroCnh)
-        editDataCnh.setText(intent.getStringExtra("data_cnh"))
-        editDataCnhVenc.setText(intent.getStringExtra("data_venc_cnh"))
-        editTelefone.setText(intent.getStringExtra("telefone"))
-
-        if (numeroCnh != "") {
+        if (cnhViewModel.numeroCnh != "") {
             editNumeroCnh.setEnabled(false)
         } else {
             editNumeroCnh.setEnabled(true)
@@ -57,7 +61,6 @@ class CadastroCnhActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.btSalvarCnh)
 
         button.setOnClickListener {
-
             if (campoPreenchido(editNomeCompleto, "Nome Completo")
                 && campoPreenchido(editDataNascimento, "Data Nascimento")
                 && campoPreenchido(editNumeroCnh, "Numero CNH")
@@ -98,11 +101,19 @@ class CadastroCnhActivity : AppCompatActivity() {
                     )
                 }
 
-
-
                 finish()
             }
         }
+    }
+
+    private fun initViewModel() {
+        cnhViewModel = ViewModelProviders.of(this).get(CnhViewModel::class.java)
+        cnhViewModel.numeroCnh = intent.getStringExtra("numero_cnh")
+        cnhViewModel.nomeCompleto = intent.getStringExtra("nome_completo")
+        cnhViewModel.dataNascimento = intent.getStringExtra("data_nascimento")
+        cnhViewModel.dataCnh = intent.getStringExtra("data_cnh")
+        cnhViewModel.dataVencCnh = intent.getStringExtra("data_venc_cnh")
+        cnhViewModel.telefone = intent.getStringExtra("telefone")
     }
 
     fun campoPreenchido(campo: EditText, b: String): Boolean {
@@ -115,7 +126,6 @@ class CadastroCnhActivity : AppCompatActivity() {
 
         return true
     }
-
 
     companion object {
         const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
