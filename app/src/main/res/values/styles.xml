@@ -33,7 +33,7 @@ The margin is a simple delimiter between the words. -->
 
     <style name="txt_padrao_form">
         <item name="android:textColor">#B0E0E6</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:padding">7sp</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -44,7 +44,8 @@ The margin is a simple delimiter between the words. -->
         <item name="android:background">@drawable/custom_edittext</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:padding">7sp</item>
-        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:singleLine">true</item>
     </style>
 
