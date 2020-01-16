@@ -17,12 +17,12 @@ class CnhListAdapter internal constructor(
 ) : RecyclerView.Adapter<CnhListAdapter.CnhViewHolder>() {
 
     private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var testes = emptyList<Cnh>()
+    private var records = emptyList<Cnh>()
 
     interface OnItemClickListener {
         fun onItemClick(texto: String, objeto: Cnh)
-        fun onTelefoneClick(texto: String, objeto: Cnh)
-        fun onCompartilharClick(texto: String, objeto: Cnh)
+        fun onTelephoneClick(texto: String, objeto: Cnh)
+        fun onShareClick(texto: String, objeto: Cnh)
     }
 
     private var onItemClickListener: OnItemClickListener? = null
@@ -33,7 +33,7 @@ class CnhListAdapter internal constructor(
 
     inner class CnhViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cnhItemView: TextView = itemView.findViewById(R.id.textView)
-        val telefoneImageView: ImageView = itemView.findViewById(R.id.imageView)
+        val telephoneImageView: ImageView = itemView.findViewById(R.id.imageView)
         val compartilharImageView: ImageView = itemView.findViewById(R.id.imageView2)
     }
 
@@ -44,43 +44,43 @@ class CnhListAdapter internal constructor(
 
     override fun onBindViewHolder(holder: CnhViewHolder, position: Int) {
 
-        val current = testes[position]
+        val current = records[position]
 
-        val dataVencimento = Date(current.dataVencCnh)
+        val cnh_expired = Date(current.cnh_expired)
         val format = SimpleDateFormat("dd/MM/yyyy")
-        val dataVencimentoFormatada = format.format(dataVencimento)
+        val dataVencimentoFormatada = format.format(cnh_expired)
 
-        val texto = "${current.nomeCompleto} - Vencimento: $dataVencimentoFormatada"
+        val texto = "${current.full_name} - Vencimento: $dataVencimentoFormatada"
         holder.cnhItemView.text = texto
 
         holder.cnhItemView.setOnClickListener {
-            mListener?.onItemClick(texto, testes[position])
+            mListener?.onItemClick(texto, records[position])
         }
 
-        holder.telefoneImageView.setOnClickListener {
-            mListener?.onTelefoneClick(texto, testes[position])
+        holder.telephoneImageView.setOnClickListener {
+            mListener?.onTelephoneClick(texto, records[position])
         }
 
         holder.compartilharImageView.setOnClickListener {
-            mListener?.onCompartilharClick(texto, testes[position])
+            mListener?.onShareClick(texto, records[position])
         }
 
     }
 
-    internal fun setCnhs(testes: List<Cnh>) {
-        this.testes = testes
+    internal fun setCnhs(records: List<Cnh>) {
+        this.records = records
         notifyDataSetChanged()
     }
 
-    override fun getItemCount() = testes.size
+    override fun getItemCount() = records.size
 
     fun removeItem(viewHolder: RecyclerView.ViewHolder) {
-        this.testes = this.testes.drop(viewHolder.adapterPosition)
+        this.records = this.records.drop(viewHolder.adapterPosition)
         notifyItemRemoved(viewHolder.adapterPosition)
     }
 
     fun getId(position: Int): String {
-        return testes[position].numeroCnh
+        return records[position].cnh_number
     }
 
 

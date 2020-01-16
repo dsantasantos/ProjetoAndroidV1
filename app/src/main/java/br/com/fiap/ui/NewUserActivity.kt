@@ -7,9 +7,9 @@ import android.widget.EditText
 import android.widget.Toast
 import br.com.fiap.R
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_cadastro_usuario.*
+import kotlinx.android.synthetic.main.activity_new_user.*
 
-class CadastroUsuarioActivity : AppCompatActivity() {
+class NewUserActivity : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var editUserEmail: EditText
@@ -18,7 +18,7 @@ class CadastroUsuarioActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastro_usuario)
+        setContentView(R.layout.activity_new_user)
 
         firebaseAuth = FirebaseAuth.getInstance()
 

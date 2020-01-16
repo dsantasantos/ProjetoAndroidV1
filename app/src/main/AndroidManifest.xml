@@ -13,12 +13,12 @@
             android:supportsRtl="true"
             android:theme="@style/FullScreen">
         <activity android:name=".ui.LoginActivity"></activity>
-        <activity android:name=".ui.CadastroUsuarioActivity" />
-        <activity android:name=".ui.SobreActivity" />
-        <activity android:name=".ui.ListagemCnhActivity" />
-        <activity android:name=".ui.CadastroCnhActivity" />
+        <activity android:name=".ui.NewUserActivity" />
+        <activity android:name=".ui.AboutActivity" />
+        <activity android:name=".ui.ListCnhActivity" />
+        <activity android:name=".ui.NewCnhActivity" />
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.InicioActivity">
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

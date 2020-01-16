@@ -16,14 +16,14 @@ class MainActivity : AppCompatActivity() {
         navigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.itemMenuNew -> {
-                    val nextScreen = Intent(this, CadastroCnhActivity::class.java)
-                    nextScreen.putExtra("numero_cnh", "")
+                    val nextScreen = Intent(this, NewCnhActivity::class.java)
+                    nextScreen.putExtra("cnh_number", "")
                     startActivity(nextScreen)
                     return@setOnNavigationItemSelectedListener true
                 }
 
                 R.id.itemMenuList -> {
-                    val nextScreen = Intent(this, ListagemCnhActivity::class.java)
+                    val nextScreen = Intent(this, ListCnhActivity::class.java)
                     startActivity(nextScreen)
                     return@setOnNavigationItemSelectedListener true
                 }

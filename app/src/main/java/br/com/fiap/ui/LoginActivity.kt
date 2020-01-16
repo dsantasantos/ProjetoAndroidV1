@@ -35,7 +35,7 @@ class LoginActivity : AppCompatActivity() {
         val btSignIn = findViewById<Button>(R.id.btLoginSignIn)
 
         btNewUser.setOnClickListener {
-            val intent = Intent(this, CadastroUsuarioActivity::class.java)
+            val intent = Intent(this, NewUserActivity::class.java)
             startActivity(intent)
         }
 

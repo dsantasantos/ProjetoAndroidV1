@@ -11,11 +11,11 @@ import br.com.fiap.R
 import br.com.fiap.entidades.Cnh
 import br.com.fiap.viewmodel.CnhViewModel
 import br.com.fiap.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.activity_cadastro_cnh.*
+import kotlinx.android.synthetic.main.activity_new_cnh.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 
-class CadastroCnhActivity : AppCompatActivity() {
+class NewCnhActivity : AppCompatActivity() {
 
     private val mainViewModel: MainViewModel by viewModel()
     private lateinit var cnhViewModel: CnhViewModel
@@ -30,7 +30,7 @@ class CadastroCnhActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastro_cnh)
+        setContentView(R.layout.activity_new_cnh)
         val dataFormat = SimpleDateFormat("dd/MM/yyyy")
 
         ivNewBack.setOnClickListener {
@@ -46,14 +46,14 @@ class CadastroCnhActivity : AppCompatActivity() {
         editTextCnhExpired = findViewById(R.id.etNewDateExpired)
         editTextTelephone = findViewById(R.id.etNewTelephoneNumber)
 
-        editTextFullName.setText(cnhViewModel.nomeCompleto)
-        editTextBirthDate.setText(cnhViewModel.dataNascimento)
-        editTextCnhNumber.setText(cnhViewModel.numeroCnh)
-        editTextCnhDate.setText(cnhViewModel.dataCnh)
-        editTextCnhExpired.setText(cnhViewModel.dataVencCnh)
-        editTextTelephone.setText(cnhViewModel.telefone)
+        editTextFullName.setText(cnhViewModel.full_name)
+        editTextBirthDate.setText(cnhViewModel.birthdate)
+        editTextCnhNumber.setText(cnhViewModel.cnh_number)
+        editTextCnhDate.setText(cnhViewModel.cnh_date)
+        editTextCnhExpired.setText(cnhViewModel.cnh_expired)
+        editTextTelephone.setText(cnhViewModel.telephone)
 
-        if (cnhViewModel.numeroCnh != "") {
+        if (cnhViewModel.cnh_number != "") {
             editTextCnhNumber.setEnabled(false)
         } else {
             editTextCnhNumber.setEnabled(true)
@@ -109,12 +109,12 @@ class CadastroCnhActivity : AppCompatActivity() {
                     mainViewModel.insert(objeto)
                 } else {
                     mainViewModel.update(
-                        objeto.numeroCnh,
-                        objeto.nomeCompleto,
-                        objeto.dataNascimento,
-                        objeto.dataCnh,
-                        objeto.dataVencCnh,
-                        objeto.telefone
+                        objeto.cnh_number,
+                        objeto.full_name,
+                        objeto.birthdate,
+                        objeto.cnh_date,
+                        objeto.cnh_expired,
+                        objeto.telephone
                     )
                 }
 
@@ -125,12 +125,11 @@ class CadastroCnhActivity : AppCompatActivity() {
 
     private fun initViewModel() {
         cnhViewModel = ViewModelProviders.of(this).get(CnhViewModel::class.java)
-        cnhViewModel.numeroCnh = intent.getStringExtra("numero_cnh")
-        cnhViewModel.nomeCompleto = intent.getStringExtra("nome_completo")
-        cnhViewModel.dataNascimento = intent.getStringExtra("data_nascimento")
-        cnhViewModel.dataCnh = intent.getStringExtra("data_cnh")
-        cnhViewModel.dataVencCnh = intent.getStringExtra("data_venc_cnh")
-        cnhViewModel.telefone = intent.getStringExtra("telefone")
+        cnhViewModel.cnh_number = intent.getStringExtra("cnh_number")
+        cnhViewModel.full_name = intent.getStringExtra("birthdate")
+        cnhViewModel.cnh_date = intent.getStringExtra("cnh_date")
+        cnhViewModel.cnh_expired = intent.getStringExtra("cnh_expired")
+        cnhViewModel.telephone = intent.getStringExtra("telephone")
     }
 
     fun campoPreenchido(campo: EditText, b: String): Boolean {

@@ -19,9 +19,9 @@ class CnhRepository(private val cnhDao: CnhDao) {
         dataNascimento: Long,
         dataCnh: Long,
         dataVencCnh: Long,
-        telefone: String
+        telephone: String
     ) {
-        cnhDao.update(id, nomeCompleto, dataNascimento, dataCnh, dataVencCnh, telefone)
+        cnhDao.update(id, nomeCompleto, dataNascimento, dataCnh, dataVencCnh, telephone)
     }
 
     fun deleteById(id: String) {

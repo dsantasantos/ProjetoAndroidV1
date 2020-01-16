@@ -10,17 +10,24 @@ import br.com.fiap.entidades.Cnh
 @Dao
 interface CnhDao {
 
-    @Query("SELECT * from cnh ORDER BY data_venc_cnh DESC")
+    @Query("SELECT * from cnh ORDER BY cnh_expired DESC")
     fun getAllCnhs(): LiveData<List<Cnh>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(cnh: Cnh)
 
-    @Query("DELETE FROM cnh WHERE numero_cnh = :id")
+    @Query("DELETE FROM cnh WHERE cnh_number = :id")
     fun deleteById(id: String)
 
-    @Query("UPDATE cnh SET nome_completo=:nomeCompleto, data_nascimento=:dataNascimento, data_cnh=:dataCnh, data_venc_cnh=:dataVencCnh, telefone=:telefone WHERE numero_cnh = :id")
-    fun update(id: String, nomeCompleto: String, dataNascimento: Long, dataCnh: Long, dataVencCnh: Long, telefone: String)
+    @Query("UPDATE cnh SET full_name=:full_name, birthdate=:birthdate, cnh_date=:cnh_date, cnh_expired=:cnh_expired, telephone=:telephone WHERE cnh_number = :id")
+    fun update(
+        id: String,
+        full_name: String,
+        birthdate: Long,
+        cnh_date: Long,
+        cnh_expired: Long,
+        telephone: String
+    )
 
     @Query("DELETE FROM cnh")
     fun deleteAll()

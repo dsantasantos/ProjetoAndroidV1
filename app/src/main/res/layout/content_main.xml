@@ -6,8 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:showIn="@layout/activity_listagem_cnh"
-        tools:context=".ui.ListagemCnhActivity">
+        tools:showIn="@layout/activity_list_cnh"
+        tools:context=".ui.ListCnhActivity">
 
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"

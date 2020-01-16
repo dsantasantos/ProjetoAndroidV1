@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/background2"
-        tools:context=".ui.ListagemCnhActivity">
+        tools:context=".ui.ListCnhActivity">
 
     <ImageView
             android:id="@+id/ivNewBack"
