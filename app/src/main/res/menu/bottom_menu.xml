@@ -16,4 +16,9 @@
             android:icon="@drawable/ic_announcement_black_24dp"
             android:title="Sobre" />
 
+    <item
+            android:id="@+id/sair"
+            android:icon="@drawable/ic_announcement_black_24dp"
+            android:title="Sair" />
+
 </menu>
