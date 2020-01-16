@@ -9,22 +9,21 @@ import org.koin.core.context.startKoin
 import repositoryModule
 import viewModelModule
 
-class MinhaAplicacao : Application() {
+class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
-        if(BuildConfig.DEBUG){
+        if (BuildConfig.DEBUG) {
             Stetho.initializeWithDefaults(this);
         }
 
         startKoin {
             androidLogger()
-            androidContext(this@MinhaAplicacao)
+            androidContext(this@MyApp)
             modules(
                 listOf(
                     viewModelModule,
-                    //uiModule,
                     dbModule,
                     repositoryModule
                 )

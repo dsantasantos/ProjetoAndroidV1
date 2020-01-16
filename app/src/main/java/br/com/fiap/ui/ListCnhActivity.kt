@@ -47,11 +47,11 @@ class ListCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListener 
     override fun onShareClick(texto: String, objeto: Cnh) {
         val sendIntent = Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        val textoCompartilhado =
+        val texShare =
             "${resources.getString(R.string.screen_new_cnh_full_name)}: ${objeto.full_name} - ${resources.getString(
                 R.string.screen_new_cnh_number
             )}: ${objeto.cnh_number} - ${resources.getString(R.string.screen_new_cnh_telephone)}: ${objeto.telephone}"
-        sendIntent.putExtra(Intent.EXTRA_TEXT, textoCompartilhado);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, texShare);
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }

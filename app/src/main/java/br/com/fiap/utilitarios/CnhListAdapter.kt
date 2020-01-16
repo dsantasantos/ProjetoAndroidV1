@@ -34,7 +34,7 @@ class CnhListAdapter internal constructor(
     inner class CnhViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cnhItemView: TextView = itemView.findViewById(R.id.textView)
         val telephoneImageView: ImageView = itemView.findViewById(R.id.imageView)
-        val compartilharImageView: ImageView = itemView.findViewById(R.id.imageView2)
+        val shareImageView: ImageView = itemView.findViewById(R.id.imageView2)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CnhViewHolder {
@@ -48,23 +48,22 @@ class CnhListAdapter internal constructor(
 
         val cnh_expired = Date(current.cnh_expired)
         val format = SimpleDateFormat("dd/MM/yyyy")
-        val dataVencimentoFormatada = format.format(cnh_expired)
+        val cnh_expired_format = format.format(cnh_expired)
 
-        val texto = "${current.full_name} - Vencimento: $dataVencimentoFormatada"
-        holder.cnhItemView.text = texto
+        val textContent = "${current.full_name} - $cnh_expired_format"
+        holder.cnhItemView.text = textContent
 
         holder.cnhItemView.setOnClickListener {
-            mListener?.onItemClick(texto, records[position])
+            mListener?.onItemClick(textContent, records[position])
         }
 
         holder.telephoneImageView.setOnClickListener {
-            mListener?.onTelephoneClick(texto, records[position])
+            mListener?.onTelephoneClick(textContent, records[position])
         }
 
-        holder.compartilharImageView.setOnClickListener {
-            mListener?.onShareClick(texto, records[position])
+        holder.shareImageView.setOnClickListener {
+            mListener?.onShareClick(textContent, records[position])
         }
-
     }
 
     internal fun setCnhs(records: List<Cnh>) {
@@ -82,6 +81,4 @@ class CnhListAdapter internal constructor(
     fun getId(position: Int): String {
         return records[position].cnh_number
     }
-
-
 }
