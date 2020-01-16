@@ -11,27 +11,25 @@ import kotlinx.android.synthetic.main.activity_cadastro_usuario.*
 
 class CadastroUsuarioActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var editEmail: EditText
-    private lateinit var editSenha: EditText
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var editUserEmail: EditText
+    private lateinit var editUserPassword: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_usuario)
 
-        auth = FirebaseAuth.getInstance()
+        firebaseAuth = FirebaseAuth.getInstance()
 
-        editEmail = findViewById(R.id.inputEmail)F
-        editSenha = findViewById(R.id.inputSenha)
+        editUserEmail = findViewById(R.id.etUserEmail)
+        editUserPassword = findViewById(R.id.etUserPassword)
 
-        btSalvarUsuario.setOnClickListener {
+        btUserSave.setOnClickListener {
 
-            val email = editEmail.text.toString()
-            val senha = editSenha.text.toString()
-
-            auth.createUserWithEmailAndPassword(
-                email,
-                senha
+            firebaseAuth.createUserWithEmailAndPassword(
+                editUserEmail.text.toString(),
+                editUserPassword.text.toString()
             )
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
@@ -40,14 +38,12 @@ class CadastroUsuarioActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(
                             applicationContext,
-                            "Erro ao criar novo usuário",
+                            resources.getString(R.string.screen_new_user_message_error_create),
                             Toast.LENGTH_LONG
                         )
                             .show()
                     }
                 }
         }
-
-
     }
 }

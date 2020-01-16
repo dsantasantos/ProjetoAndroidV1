@@ -17,78 +17,95 @@ import java.text.SimpleDateFormat
 
 class CadastroCnhActivity : AppCompatActivity() {
 
-    private lateinit var editNomeCompleto: EditText
-    private lateinit var editDataNascimento: EditText
-    private lateinit var editNumeroCnh: EditText
-    private lateinit var editDataCnh: EditText
-    private lateinit var editDataCnhVenc: EditText
-    private lateinit var editTelefone: EditText
-
     private val mainViewModel: MainViewModel by viewModel()
     private lateinit var cnhViewModel: CnhViewModel
+
+    private lateinit var editTextFullName: EditText
+    private lateinit var editTextBirthDate: EditText
+    private lateinit var editTextCnhNumber: EditText
+    private lateinit var editTextCnhDate: EditText
+    private lateinit var editTextCnhExpired: EditText
+    private lateinit var editTextTelephone: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_cnh)
+        val dataFormat = SimpleDateFormat("dd/MM/yyyy")
 
-        ivVoltar.setOnClickListener {
+        ivNewBack.setOnClickListener {
             onBackPressed()
         }
 
         initViewModel()
 
-        editNomeCompleto = findViewById(R.id.inputNomeCompleto)
-        editDataNascimento = findViewById(R.id.inputDataNascimento)
-        editNumeroCnh = findViewById(R.id.inputNumeroCnh)
-        editDataCnh = findViewById(R.id.inputDataCnh)
-        editDataCnhVenc = findViewById(R.id.inputVencimento)
-        editTelefone = findViewById(R.id.inputTelefone)
+        editTextFullName = findViewById(R.id.etNewFullName)
+        editTextBirthDate = findViewById(R.id.etNewBirthDate)
+        editTextCnhNumber = findViewById(R.id.etNewNumberCnh)
+        editTextCnhDate = findViewById(R.id.etNewDateCnh)
+        editTextCnhExpired = findViewById(R.id.etNewDateExpired)
+        editTextTelephone = findViewById(R.id.etNewTelephoneNumber)
 
-        editNomeCompleto.setText(cnhViewModel.nomeCompleto)
-        editDataNascimento.setText(cnhViewModel.dataNascimento)
-        editNumeroCnh.setText(cnhViewModel.numeroCnh)
-        editDataCnh.setText(cnhViewModel.dataCnh)
-        editDataCnhVenc.setText(cnhViewModel.dataVencCnh)
-        editTelefone.setText(cnhViewModel.telefone)
+        editTextFullName.setText(cnhViewModel.nomeCompleto)
+        editTextBirthDate.setText(cnhViewModel.dataNascimento)
+        editTextCnhNumber.setText(cnhViewModel.numeroCnh)
+        editTextCnhDate.setText(cnhViewModel.dataCnh)
+        editTextCnhExpired.setText(cnhViewModel.dataVencCnh)
+        editTextTelephone.setText(cnhViewModel.telefone)
 
         if (cnhViewModel.numeroCnh != "") {
-            editNumeroCnh.setEnabled(false)
+            editTextCnhNumber.setEnabled(false)
         } else {
-            editNumeroCnh.setEnabled(true)
+            editTextCnhNumber.setEnabled(true)
         }
 
-        val button = findViewById<Button>(R.id.btSalvarCnh)
+        val button = findViewById<Button>(R.id.btNewSave)
 
         button.setOnClickListener {
-            if (campoPreenchido(editNomeCompleto, "Nome Completo")
-                && campoPreenchido(editDataNascimento, "Data Nascimento")
-                && campoPreenchido(editNumeroCnh, "Numero CNH")
-                && campoPreenchido(editDataCnh, "Data CNH")
-                && campoPreenchido(editDataCnhVenc, "Data CNH Vencimento")
-                && campoPreenchido(editTelefone, "Telefone")
+            if (campoPreenchido(
+                    editTextFullName,
+                    resources.getString(R.string.screen_new_cnh_full_name)
+                )
+                && campoPreenchido(
+                    editTextBirthDate,
+                    resources.getString(R.string.screen_new_cnh_birth_date)
+                )
+                && campoPreenchido(
+                    editTextCnhNumber,
+                    resources.getString(R.string.screen_new_cnh_number)
+                )
+                && campoPreenchido(
+                    editTextCnhDate,
+                    resources.getString(R.string.screen_new_cnh_date)
+                )
+                && campoPreenchido(
+                    editTextCnhExpired,
+                    resources.getString(R.string.screen_new_cnh_expired)
+                )
+                && campoPreenchido(
+                    editTextTelephone,
+                    resources.getString(R.string.screen_new_cnh_telephone)
+                )
             ) {
 
-                val df = SimpleDateFormat("dd/MM/yyyy")
-
-                var nomeCompleto = editNomeCompleto.text.toString()
-                var dataNascimento = df.parse(editDataNascimento.text.toString()).time
-                var numeroCnh = editNumeroCnh.text.toString()
-                var dataCnh = df.parse(editDataCnh.text.toString()).time
-                var dataVencCnh = df.parse(editDataCnhVenc.text.toString()).time
-                var telefone = editTelefone.text.toString()
+                var fullName = editTextFullName.text.toString()
+                var birthDate = dataFormat.parse(editTextBirthDate.text.toString()).time
+                var cnhNumber = editTextCnhNumber.text.toString()
+                var cnhDate = dataFormat.parse(editTextCnhDate.text.toString()).time
+                var cnhExpired = dataFormat.parse(editTextCnhExpired.text.toString()).time
+                var telephone = editTextTelephone.text.toString()
 
                 val objeto =
                     Cnh(
-                        nomeCompleto,
-                        dataNascimento,
-                        numeroCnh,
-                        dataCnh,
-                        dataVencCnh,
-                        telefone
+                        fullName,
+                        birthDate,
+                        cnhNumber,
+                        cnhDate,
+                        cnhExpired,
+                        telephone
                     )
 
-                if (editNumeroCnh.isEnabled) {
+                if (editTextCnhNumber.isEnabled) {
                     mainViewModel.insert(objeto)
                 } else {
                     mainViewModel.update(

@@ -14,7 +14,6 @@ import br.com.fiap.R
 import br.com.fiap.entidades.Cnh
 import br.com.fiap.utilitarios.CnhListAdapter
 import br.com.fiap.viewmodel.MainViewModel
-
 import kotlinx.android.synthetic.main.activity_listagem_cnh.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,15 +39,16 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
     }
 
     override fun onTelefoneClick(texto: String, objeto: Cnh) {
-        val uri = Uri.parse("tel:"+ objeto.telefone)
-        val intent = Intent(Intent.ACTION_DIAL,uri);
+        val uri = Uri.parse("tel:" + objeto.telefone)
+        val intent = Intent(Intent.ACTION_DIAL, uri);
         startActivity(intent);
     }
 
     override fun onCompartilharClick(texto: String, objeto: Cnh) {
-        val sendIntent =  Intent();
+        val sendIntent = Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        val textoCompartilhado = "Nome: ${objeto.nomeCompleto} - CNH: ${objeto.numeroCnh} - Telefone: ${objeto.nomeCompleto}"
+        val textoCompartilhado =
+            "Nome: ${objeto.nomeCompleto} - CNH: ${objeto.numeroCnh} - Telefone: ${objeto.nomeCompleto}"
         sendIntent.putExtra(Intent.EXTRA_TEXT, textoCompartilhado);
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
@@ -74,7 +74,7 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
             startActivity(intent)
         }
 
-        ivVoltar.setOnClickListener {
+        ivNewBack.setOnClickListener {
             onBackPressed()
         }
 
@@ -91,7 +91,7 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val id = adapter.getId(viewHolder.adapterPosition)
                     mainViewModel.deleteById(id)
-                    (adapter as CnhListAdapter).removeItem(viewHolder)
+                    adapter.removeItem(viewHolder)
                 }
             }
 

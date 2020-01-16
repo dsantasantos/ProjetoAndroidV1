@@ -11,7 +11,7 @@ class SobreActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sobre)
 
-        ivVoltar.setOnClickListener {
+        ivNewBack.setOnClickListener {
             onBackPressed()
         }
     }

@@ -8,7 +8,7 @@
         tools:context=".ui.CadastroCnhActivity">
 
     <ImageView
-            android:id="@+id/ivVoltar"
+            android:id="@+id/ivNewBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -19,13 +19,13 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tvLoginTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/arial_rounded_mt_bold"
             android:gravity="center"
-            android:text="@string/cadastro_cnh_title"
+            android:text="@string/screen_new_cnh_title"
             android:textColor="@color/mainLogoColor"
             android:textSize="@dimen/main_title_font_size"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,147 +34,147 @@
 
 
     <TextView
-            android:id="@+id/txtNomeCompleto"
+            android:id="@+id/tvNewFullName"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Nome completo:"
+            android:text="@string/screen_new_cnh_full_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle" />
 
 
     <EditText
-            android:id="@+id/inputNomeCompleto"
+            android:id="@+id/etNewFullName"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:hint="Nome completo"
+            android:hint="@string/screen_new_cnh_full_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNomeCompleto" />
+            app:layout_constraintTop_toBottomOf="@+id/tvNewFullName" />
 
     <TextView
-            android:id="@+id/txtDataNascimento"
+            android:id="@+id/tvNewBirthDate"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:text="Data Nascimento:"
+            android:text="@string/screen_new_cnh_birth_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputNomeCompleto" />
+            app:layout_constraintTop_toBottomOf="@+id/etNewFullName" />
 
     <EditText
-            android:id="@+id/inputDataNascimento"
+            android:id="@+id/etNewBirthDate"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:hint="Data Nascimento"
+            android:hint="@string/screen_new_cnh_birth_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDataNascimento" />
+            app:layout_constraintTop_toBottomOf="@+id/tvNewBirthDate" />
 
     <TextView
-            android:id="@+id/txtNumeroCnh"
+            android:id="@+id/tvNewNumberCnh"
+            style="@style/txt_padrao_form"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/screen_new_cnh_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etNewBirthDate" />
+
+    <EditText
+            android:id="@+id/etNewNumberCnh"
+            style="@style/input_padrao_form"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:hint="@string/screen_new_cnh_number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNewNumberCnh" />
+
+    <TextView
+            android:id="@+id/tvNewDateCnh"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:text="Número CNH:"
+            android:text="@string/screen_new_cnh_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputDataNascimento" />
+            app:layout_constraintTop_toBottomOf="@+id/etNewNumberCnh" />
 
     <EditText
-            android:id="@+id/inputNumeroCnh"
+            android:id="@+id/etNewDateCnh"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:hint="Número CNH"
+            android:hint="@string/screen_new_cnh_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtNumeroCnh" />
+            app:layout_constraintTop_toBottomOf="@+id/tvNewDateCnh" />
 
     <TextView
-            android:id="@+id/txtDataCnh"
+            android:id="@+id/tvNewDateExpired"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:text="Data CNH:"
+            android:text="@string/screen_new_cnh_expired"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputNumeroCnh" />
+            app:layout_constraintTop_toBottomOf="@+id/etNewDateCnh" />
 
     <EditText
-            android:id="@+id/inputDataCnh"
+            android:id="@+id/etNewDateExpired"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:hint="Data CNH"
+            android:hint="@string/screen_new_cnh_expired"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDataCnh" />
+            app:layout_constraintTop_toBottomOf="@+id/tvNewDateExpired" />
+
 
     <TextView
-            android:id="@+id/txtDataVencimento"
+            android:id="@+id/tvNewTelephoneNumber"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:text="Data Vencimento:"
+            android:text="@string/screen_new_cnh_telephone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputDataCnh" />
+            app:layout_constraintTop_toBottomOf="@+id/etNewDateExpired" />
 
     <EditText
-            android:id="@+id/inputVencimento"
+            android:id="@+id/etNewTelephoneNumber"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:hint="Data Vencimento"
+            android:hint="@string/screen_new_cnh_telephone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDataVencimento" />
-
-
-    <TextView
-            android:id="@+id/txtTelefone"
-            style="@style/txt_padrao_form"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:text="Telefone:"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputVencimento" />
-
-    <EditText
-            android:id="@+id/inputTelefone"
-            style="@style/input_padrao_form"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
-            android:hint="Telefone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTelefone" />
+            app:layout_constraintTop_toBottomOf="@+id/tvNewTelephoneNumber" />
 
     <Button
-            android:id="@+id/btSalvarCnh"
+            android:id="@+id/btNewSave"
             style="@style/custom_button"
             android:layout_marginTop="24dp"
-            android:text="@string/button_login_cadastrar"
+            android:text="@string/button_save"
             android:textSize="@dimen/text_button_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputTelefone" />
+            app:layout_constraintTop_toBottomOf="@+id/etNewTelephoneNumber" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

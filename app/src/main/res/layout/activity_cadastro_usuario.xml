@@ -8,13 +8,13 @@
         tools:context=".ui.CadastroUsuarioActivity">
 
     <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tvLoginTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/arial_rounded_mt_bold"
             android:gravity="center"
-            android:text="@string/cadastro_usuario_title"
+            android:text="@string/screen_new_user_title"
             android:textColor="@color/mainLogoColor"
             android:textSize="@dimen/main_title_font_size"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,61 +23,61 @@
 
 
     <TextView
-            android:id="@+id/txtEmail"
+            android:id="@+id/tvUserEmail"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:text="E-mail:"
+            android:text="@string/screen_new_user_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle" />
 
     <EditText
-            android:id="@+id/inputEmail"
+            android:id="@+id/etUserEmail"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="E-mail"
+            android:hint="@string/screen_new_user_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/tvUserEmail" />
 
     <TextView
-            android:id="@+id/txtSenha"
+            android:id="@+id/tvUserPassword"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Senha:"
+            android:text="@string/screen_new_user_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
+            app:layout_constraintTop_toBottomOf="@+id/etUserEmail" />
 
     <EditText
-            android:id="@+id/inputSenha"
+            android:id="@+id/etUserPassword"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:hint="Senha"
+            android:hint="@string/screen_new_user_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSenha" />
+            app:layout_constraintTop_toBottomOf="@+id/tvUserPassword" />
 
     <Button
-            android:id="@+id/btSalvarUsuario"
+            android:id="@+id/btUserSave"
             style="@style/custom_button"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/button_usuario_cadastrar"
+            android:text="@string/button_save"
             android:textSize="@dimen/text_button_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputSenha" />
+            app:layout_constraintTop_toBottomOf="@+id/etUserPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

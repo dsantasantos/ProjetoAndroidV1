@@ -3,7 +3,6 @@ package br.com.fiap.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -12,40 +11,40 @@ import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var auth: FirebaseAuth
-    private lateinit var editEmailLogin: EditText
-    private lateinit var editSenhaLogin: EditText
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var editLoginEmail: EditText
+    private lateinit var editLoginPassword: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        auth = FirebaseAuth.getInstance()
-        val currentUser = auth.currentUser
+        firebaseAuth = FirebaseAuth.getInstance()
+        val currentUser = firebaseAuth.currentUser
 
         if (currentUser != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
-        editEmailLogin = findViewById(R.id.inputEmailLogin)
-        editSenhaLogin = findViewById(R.id.inputSenhaLogin)
+        editLoginEmail = findViewById(R.id.etLoginEmail)
+        editLoginPassword = findViewById(R.id.etLoginPassword)
 
-        val buttonCadastrar = findViewById<Button>(R.id.btCadastrar)
-        val buttonEntrar = findViewById<Button>(R.id.btEntrar)
+        val btNewUser = findViewById<Button>(R.id.btLoginNewUser)
+        val btSignIn = findViewById<Button>(R.id.btLoginSignIn)
 
-        buttonCadastrar.setOnClickListener {
+        btNewUser.setOnClickListener {
             val intent = Intent(this, CadastroUsuarioActivity::class.java)
             startActivity(intent)
         }
 
-        buttonEntrar.setOnClickListener {
+        btSignIn.setOnClickListener {
 
-            val email = editEmailLogin.text.toString()
-            val senha = editSenhaLogin.text.toString()
-
-            auth.signInWithEmailAndPassword(email, senha)
+            firebaseAuth.signInWithEmailAndPassword(
+                editLoginEmail.text.toString(),
+                editLoginPassword.text.toString()
+            )
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val intent = Intent(this, MainActivity::class.java)
@@ -53,14 +52,12 @@ class LoginActivity : AppCompatActivity() {
                     } else {
                         Toast.makeText(
                             applicationContext,
-                            "E-mail ou senha inválido",
+                            resources.getString(R.string.screen_login_message_error_sigin),
                             Toast.LENGTH_LONG
                         )
                             .show()
                     }
                 }
         }
-
-
     }
 }

@@ -8,13 +8,13 @@
         tools:context=".ui.LoginActivity">
 
     <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tvLoginTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:fontFamily="@font/arial_rounded_mt_bold"
             android:gravity="center"
-            android:text="@string/login_title"
+            android:text="@string/screen_login_title"
             android:textColor="@color/mainLogoColor"
             android:textSize="@dimen/main_title_font_size"
             app:layout_constraintEnd_toEndOf="parent"
@@ -22,75 +22,75 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/txtEmailLogin"
+            android:id="@+id/tvLoginEmail"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:text="E-mail:"
+            android:text="@string/screen_login_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginTitle" />
 
     <EditText
-            android:id="@+id/inputEmailLogin"
+            android:id="@+id/etLoginEmail"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:hint="E-mail"
+            android:hint="@string/screen_login_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.842"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtEmailLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginEmail" />
 
     <TextView
-            android:id="@+id/txtSenhaLogin"
+            android:id="@+id/tvLoginPassword"
             style="@style/txt_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:text="Senha:"
+            android:text="@string/screen_login_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.842"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputEmailLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/etLoginEmail" />
 
     <EditText
-            android:id="@+id/inputSenhaLogin"
+            android:id="@+id/etLoginPassword"
             style="@style/input_padrao_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
-            android:hint="Senha"
+            android:hint="@string/screen_login_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.842"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSenhaLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLoginPassword" />
 
     <Button
-            android:id="@+id/btEntrar"
+            android:id="@+id/btLoginSignIn"
             style="@style/custom_button"
             android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/button_login_entrar"
+            android:text="@string/button_sign_in"
             android:textSize="@dimen/text_button_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inputSenhaLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/etLoginPassword" />
 
     <Button
-            android:id="@+id/btCadastrar"
+            android:id="@+id/btLoginNewUser"
             style="@style/custom_button"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:text="Novo"
+            android:text="@string/button_new"
             android:textSize="@dimen/text_button_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.842"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btEntrar" />
+            app:layout_constraintTop_toBottomOf="@+id/btLoginSignIn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
