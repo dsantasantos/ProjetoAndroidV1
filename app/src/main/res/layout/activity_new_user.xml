@@ -35,7 +35,7 @@
 
     <TextView
             android:id="@+id/tvUserEmail"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
@@ -47,7 +47,7 @@
 
     <EditText
             android:id="@+id/etUserEmail"
-            style="@style/input_padrao_form"
+            style="@style/input_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:hint="@string/screen_new_user_email"
@@ -58,7 +58,7 @@
 
     <TextView
             android:id="@+id/tvUserPassword"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/screen_new_user_password"
@@ -69,7 +69,7 @@
 
     <EditText
             android:id="@+id/etUserPassword"
-            style="@style/input_padrao_form"
+            style="@style/input_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:hint="@string/screen_new_user_password"

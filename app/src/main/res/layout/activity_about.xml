@@ -20,7 +20,7 @@
 
     <TextView
             android:id="@+id/tvAboutDevelopedBy"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_width="304dp"
             android:layout_height="71dp"
             android:layout_marginTop="184dp"
@@ -33,7 +33,7 @@
 
     <TextView
             android:id="@+id/tvAboutVersion"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/screen_about_version"

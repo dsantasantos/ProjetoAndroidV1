@@ -35,7 +35,7 @@
 
     <TextView
             android:id="@+id/tvNewFullName"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
@@ -47,7 +47,7 @@
 
     <EditText
             android:id="@+id/etNewFullName"
-            style="@style/input_padrao_form"
+            style="@style/input_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -58,7 +58,7 @@
 
     <TextView
             android:id="@+id/tvNewBirthDate"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -69,7 +69,7 @@
 
     <EditText
             android:id="@+id/etNewBirthDate"
-            style="@style/input_padrao_form"
+            style="@style/input_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -80,7 +80,7 @@
 
     <TextView
             android:id="@+id/tvNewNumberCnh"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/screen_new_cnh_number"
@@ -91,7 +91,7 @@
 
     <EditText
             android:id="@+id/etNewNumberCnh"
-            style="@style/input_padrao_form"
+            style="@style/input_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -102,7 +102,7 @@
 
     <TextView
             android:id="@+id/tvNewDateCnh"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -113,7 +113,7 @@
 
     <EditText
             android:id="@+id/etNewDateCnh"
-            style="@style/input_padrao_form"
+            style="@style/input_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -124,7 +124,7 @@
 
     <TextView
             android:id="@+id/tvNewDateExpired"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -135,7 +135,7 @@
 
     <EditText
             android:id="@+id/etNewDateExpired"
-            style="@style/input_padrao_form"
+            style="@style/input_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -147,7 +147,7 @@
 
     <TextView
             android:id="@+id/tvNewTelephoneNumber"
-            style="@style/txt_padrao_form"
+            style="@style/txt_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
@@ -158,7 +158,7 @@
 
     <EditText
             android:id="@+id/etNewTelephoneNumber"
-            style="@style/input_padrao_form"
+            style="@style/input_default_form"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
