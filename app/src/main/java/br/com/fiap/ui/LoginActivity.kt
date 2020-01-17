@@ -3,6 +3,7 @@ package br.com.fiap.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -33,31 +34,50 @@ class LoginActivity : AppCompatActivity() {
 
         val btNewUser = findViewById<Button>(R.id.btLoginNewUser)
         val btSignIn = findViewById<Button>(R.id.btLoginSignIn)
+        val btAbout = findViewById<Button>(R.id.btLoginAbout)
 
         btNewUser.setOnClickListener {
             val intent = Intent(this, NewUserActivity::class.java)
             startActivity(intent)
         }
 
+        btAbout.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+        }
+
         btSignIn.setOnClickListener {
 
-            firebaseAuth.signInWithEmailAndPassword(
-                editLoginEmail.text.toString(),
-                editLoginPassword.text.toString()
-            )
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                    } else {
-                        Toast.makeText(
-                            applicationContext,
-                            resources.getString(R.string.screen_login_message_error_sigin),
-                            Toast.LENGTH_LONG
-                        )
-                            .show()
+            val loginEmail = editLoginEmail.text.toString()
+            val loginPassword = editLoginPassword.text.toString()
+
+
+            if (TextUtils.isEmpty(loginEmail) || TextUtils.isEmpty(loginPassword)) {
+                Toast.makeText(
+                    applicationContext,
+                    resources.getString(R.string.screen_login_message_field_empty),
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+            } else {
+                firebaseAuth.signInWithEmailAndPassword(
+                    editLoginEmail.text.toString(),
+                    editLoginPassword.text.toString()
+                )
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                resources.getString(R.string.screen_login_message_error_sigin),
+                                Toast.LENGTH_LONG
+                            )
+                                .show()
+                        }
                     }
-                }
+            }
         }
     }
 }

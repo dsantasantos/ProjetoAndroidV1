@@ -132,10 +132,14 @@ class NewCnhActivity : AppCompatActivity() {
         cnhViewModel.telephone = intent.getStringExtra("telephone")
     }
 
-    fun campoPreenchido(campo: EditText, b: String): Boolean {
+    fun campoPreenchido(campo: EditText, name: String): Boolean {
 
         if (TextUtils.isEmpty(campo.text)) {
-            Toast.makeText(applicationContext, "O campo $b não está preenchido", Toast.LENGTH_LONG)
+            Toast.makeText(
+                applicationContext,
+                "${name} ${resources.getString(R.string.screen_new_cnh_message_field_empty)}",
+                Toast.LENGTH_LONG
+            )
                 .show()
             return false
         }

@@ -13,6 +13,7 @@
     <string name="screen_new_cnh_date">Date</string>
     <string name="screen_new_cnh_expired">Expiration Date</string>
     <string name="screen_new_cnh_telephone">Telephone Number</string>
+    <string name="screen_new_cnh_message_field_empty">is empty</string>
     
     <!-- =============  SCREEN NEW USER ============== -->
     <string name="screen_new_user_title">New User</string>
@@ -25,6 +26,7 @@
     <string name="screen_login_email">E-mail</string>
     <string name="screen_login_password">Password</string>
     <string name="screen_login_message_error_sigin">E-mail or Password invalid</string>
+    <string name="screen_login_message_field_empty">E-mail or Password is empty</string>
 
     <!-- =============  SCREEN ABOUT ============== -->
     <string name="screen_about_developedby">Developed by: Fabio, Leandro, Maria e Danilo</string>
@@ -33,6 +35,7 @@
     <!-- =============  GENERAL ============== -->
     <string name="button_save">Save</string>
     <string name="button_sign_in">Sign In</string>
+    <string name="button_about">About</string>
     <string name="button_new">New</string>
     <string name="app_name">Consultoria CNH Brasil</string>
     <string name="action_settings">Settings</string>

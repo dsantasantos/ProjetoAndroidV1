@@ -80,6 +80,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etLoginPassword" />
 
+
     <Button
             android:id="@+id/btLoginNewUser"
             style="@style/custom_button"
@@ -92,5 +93,18 @@
             app:layout_constraintHorizontal_bias="0.842"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btLoginSignIn" />
+
+    <Button
+            android:id="@+id/btLoginAbout"
+            style="@style/custom_button"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/button_about"
+            android:textSize="@dimen/text_button_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btLoginNewUser" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
