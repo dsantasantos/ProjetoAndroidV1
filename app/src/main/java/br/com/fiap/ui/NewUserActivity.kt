@@ -25,6 +25,10 @@ class NewUserActivity : AppCompatActivity() {
         editUserEmail = findViewById(R.id.etUserEmail)
         editUserPassword = findViewById(R.id.etUserPassword)
 
+        ivNewUserBack.setOnClickListener {
+            onBackPressed()
+        }
+
         btUserSave.setOnClickListener {
 
             firebaseAuth.createUserWithEmailAndPassword(

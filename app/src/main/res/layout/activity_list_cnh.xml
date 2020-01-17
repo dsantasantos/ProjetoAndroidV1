@@ -8,7 +8,7 @@
         tools:context=".ui.ListCnhActivity">
 
     <ImageView
-            android:id="@+id/ivNewBack"
+            android:id="@+id/ivListBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"

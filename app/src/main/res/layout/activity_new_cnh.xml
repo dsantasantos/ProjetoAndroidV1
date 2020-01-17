@@ -8,7 +8,7 @@
         tools:context=".ui.NewCnhActivity">
 
     <ImageView
-            android:id="@+id/ivNewBack"
+            android:id="@+id/ivNewCnhBack"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"

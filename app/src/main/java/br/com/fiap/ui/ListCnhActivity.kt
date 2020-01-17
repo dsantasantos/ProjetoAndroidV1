@@ -76,7 +76,7 @@ class ListCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListener 
             startActivity(intent)
         }
 
-        ivNewBack.setOnClickListener {
+        ivListBack.setOnClickListener {
             onBackPressed()
         }
 

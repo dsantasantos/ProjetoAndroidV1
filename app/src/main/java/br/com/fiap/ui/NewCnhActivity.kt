@@ -33,7 +33,7 @@ class NewCnhActivity : AppCompatActivity() {
         setContentView(R.layout.activity_new_cnh)
         val dataFormat = SimpleDateFormat("dd/MM/yyyy")
 
-        ivNewBack.setOnClickListener {
+        ivNewCnhBack.setOnClickListener {
             onBackPressed()
         }
 
