@@ -7,10 +7,10 @@ import java.sql.Date
 
 @Entity(tableName = "cnh")
 class Cnh(
-    @ColumnInfo(name = "nome_completo") val nomeCompleto: String,
-    @ColumnInfo(name = "data_nascimento") val dataNascimento: Long,
-    @PrimaryKey @ColumnInfo(name = "numero_cnh") val numeroCnh: String,
-    @ColumnInfo(name = "data_cnh") val dataCnh: Long,
-    @ColumnInfo(name = "data_venc_cnh") val dataVencCnh: Long,
-    @ColumnInfo(name = "telefone") val telefone: String
+    @ColumnInfo(name = "full_name") val full_name: String,
+    @ColumnInfo(name = "birthdate") val birthdate: Long,
+    @PrimaryKey @ColumnInfo(name = "cnh_number") val cnh_number: String,
+    @ColumnInfo(name = "cnh_date") val cnh_date: Long,
+    @ColumnInfo(name = "cnh_expired") val cnh_expired: Long,
+    @ColumnInfo(name = "telephone") val telephone: String
 )

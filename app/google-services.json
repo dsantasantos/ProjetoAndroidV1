@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1028169626016",
+    "firebase_url": "https://fiapfinalandroid.firebaseio.com",
+    "project_id": "fiapfinalandroid",
+    "storage_bucket": "fiapfinalandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028169626016:android:d841b02f98cf8cfc43b4c5",
+        "android_client_info": {
+          "package_name": "br.com.fiap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1028169626016-d6evuqm5jj75g3l25la36khlgag4ssan.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.fiap",
+            "certificate_hash": "ff51621b1fa88fc30143e912f741656dac87e547"
+          }
+        },
+        {
+          "client_id": "1028169626016-k80c85la2gjr7gc0po1vt0nrfu4ehhoa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzvePyPV8pQWKLbkes0ORSzF5r1W_6rW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1028169626016-k80c85la2gjr7gc0po1vt0nrfu4ehhoa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

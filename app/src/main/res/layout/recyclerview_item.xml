@@ -11,7 +11,7 @@
 
         <TextView
                 android:id="@+id/textView"
-                style="@style/txt_padrao_form"
+                style="@style/txt_default_form"
                 android:layout_width="295dp"
                 android:layout_height="wrap_content" />
 

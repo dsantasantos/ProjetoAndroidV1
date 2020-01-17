@@ -14,13 +14,12 @@ import br.com.fiap.R
 import br.com.fiap.entidades.Cnh
 import br.com.fiap.utilitarios.CnhListAdapter
 import br.com.fiap.viewmodel.MainViewModel
-
-import kotlinx.android.synthetic.main.activity_listagem_cnh.*
+import kotlinx.android.synthetic.main.activity_list_cnh.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 
-class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListener {
+class ListCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListener {
 
     private val mainViewModel: MainViewModel by viewModel()
 
@@ -28,28 +27,31 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
 
         val format = SimpleDateFormat("dd/MM/yyyy")
 
-        val intent = Intent(this, CadastroCnhActivity::class.java)
-        intent.putExtra("nome_completo", objeto.nomeCompleto)
-        intent.putExtra("data_nascimento", format.format(objeto.dataNascimento))
-        intent.putExtra("numero_cnh", objeto.numeroCnh)
-        intent.putExtra("data_cnh", format.format(objeto.dataCnh))
-        intent.putExtra("data_venc_cnh", format.format(objeto.dataVencCnh))
-        intent.putExtra("telefone", objeto.telefone)
+        val intent = Intent(this, NewCnhActivity::class.java)
+        intent.putExtra("full_name", objeto.full_name)
+        intent.putExtra("birthdate", format.format(objeto.birthdate))
+        intent.putExtra("cnh_number", objeto.cnh_number)
+        intent.putExtra("cnh_date", format.format(objeto.cnh_date))
+        intent.putExtra("cnh_expired", format.format(objeto.cnh_expired))
+        intent.putExtra("telephone", objeto.telephone)
 
         startActivity(intent)
     }
 
-    override fun onTelefoneClick(texto: String, objeto: Cnh) {
-        val uri = Uri.parse("tel:"+ objeto.telefone)
-        val intent = Intent(Intent.ACTION_DIAL,uri);
+    override fun onTelephoneClick(texto: String, objeto: Cnh) {
+        val uri = Uri.parse("tel:" + objeto.telephone)
+        val intent = Intent(Intent.ACTION_DIAL, uri);
         startActivity(intent);
     }
 
-    override fun onCompartilharClick(texto: String, objeto: Cnh) {
-        val sendIntent =  Intent();
+    override fun onShareClick(texto: String, objeto: Cnh) {
+        val sendIntent = Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        val textoCompartilhado = "Nome: ${objeto.nomeCompleto} - CNH: ${objeto.numeroCnh} - Telefone: ${objeto.nomeCompleto}"
-        sendIntent.putExtra(Intent.EXTRA_TEXT, textoCompartilhado);
+        val texShare =
+            "${resources.getString(R.string.screen_new_cnh_full_name)}: ${objeto.full_name} - ${resources.getString(
+                R.string.screen_new_cnh_number
+            )}: ${objeto.cnh_number} - ${resources.getString(R.string.screen_new_cnh_telephone)}: ${objeto.telephone}"
+        sendIntent.putExtra(Intent.EXTRA_TEXT, texShare);
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
@@ -59,7 +61,7 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
         val adapter = CnhListAdapter(this, this)
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_listagem_cnh)
+        setContentView(R.layout.activity_list_cnh)
         setSupportActionBar(toolbar)
 
         setUpList(adapter)
@@ -69,12 +71,12 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
         })
 
         fab.setOnClickListener { view ->
-            val intent = Intent(this, CadastroCnhActivity::class.java)
-            intent.putExtra("numero_cnh", "")
+            val intent = Intent(this, NewCnhActivity::class.java)
+            intent.putExtra("cnh_number", "")
             startActivity(intent)
         }
 
-        ivVoltar.setOnClickListener {
+        ivListBack.setOnClickListener {
             onBackPressed()
         }
 
@@ -91,7 +93,7 @@ class ListagemCnhActivity : AppCompatActivity(), CnhListAdapter.OnItemClickListe
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                     val id = adapter.getId(viewHolder.adapterPosition)
                     mainViewModel.deleteById(id)
-                    (adapter as CnhListAdapter).removeItem(viewHolder)
+                    adapter.removeItem(viewHolder)
                 }
             }
 

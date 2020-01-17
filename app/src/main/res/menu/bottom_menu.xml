@@ -2,18 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-            android:id="@+id/novo_cnh"
+            android:id="@+id/itemMenuNew"
             android:icon="@drawable/ic_save_black_24dp"
-            android:title="Nova" />
+            android:title="@string/screen_menu_new" />
 
     <item
-            android:id="@+id/listagem_cnh"
+            android:id="@+id/itemMenuList"
             android:icon="@drawable/ic_dehaze_black_24dp"
-            android:title="Listagem" />
+            android:title="@string/screen_menu_all" />
 
     <item
-            android:id="@+id/sobre"
-            android:icon="@drawable/ic_announcement_black_24dp"
-            android:title="Sobre" />
+            android:id="@+id/itemMenuExit"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/screen_menu_signout" />
+    />
 
 </menu>
