@@ -1,5 +1,6 @@
 package br.com.fiap.ui
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -15,6 +16,7 @@ import br.com.fiap.viewmodel.CnhViewModel
 import br.com.fiap.viewmodel.MainViewModel
 import kotlinx.android.synthetic.main.activity_new_cnh.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -49,10 +51,6 @@ class NewCnhActivity : AppCompatActivity() {
         editTextCnhExpired = findViewById(R.id.etNewDateExpired)
         editTextTelephone = findViewById(R.id.etNewTelephoneNumber)
 
-        setDateEditText(editTextBirthDate)
-        setDateEditText(editTextCnhDate)
-        setDateEditText(editTextCnhExpired)
-
         editTextFullName.setText(cnhViewModel.full_name)
         editTextBirthDate.setText(cnhViewModel.birthdate)
         editTextCnhNumber.setText(cnhViewModel.cnh_number)
@@ -69,6 +67,8 @@ class NewCnhActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.btNewSave)
 
         button.setOnClickListener {
+
+
             if (campoPreenchido(
                     editTextFullName,
                     resources.getString(R.string.screen_new_cnh_full_name)
@@ -95,38 +95,54 @@ class NewCnhActivity : AppCompatActivity() {
                 )
             ) {
 
-                var fullName = editTextFullName.text.toString()
-                var birthDate = dataFormat.parse(editTextBirthDate.text.toString()).time
-                var cnhNumber = editTextCnhNumber.text.toString()
-                var cnhDate = dataFormat.parse(editTextCnhDate.text.toString()).time
-                var cnhExpired = dataFormat.parse(editTextCnhExpired.text.toString()).time
-                var telephone = editTextTelephone.text.toString()
-
-                val objeto =
-                    Cnh(
-                        fullName,
-                        birthDate,
-                        cnhNumber,
-                        cnhDate,
-                        cnhExpired,
-                        telephone
+                if (validDate(
+                        editTextBirthDate,
+                        resources.getString(R.string.screen_new_cnh_birth_date)
                     )
-
-                if (editTextCnhNumber.isEnabled) {
-                    mainViewModel.insert(objeto)
-                } else {
-                    mainViewModel.update(
-                        objeto.cnh_number,
-                        objeto.full_name,
-                        objeto.birthdate,
-                        objeto.cnh_date,
-                        objeto.cnh_expired,
-                        objeto.telephone
+                    && validDate(
+                        editTextCnhDate,
+                        resources.getString(R.string.screen_new_cnh_date)
                     )
+                    && validDate(
+                        editTextCnhExpired,
+                        resources.getString(R.string.screen_new_cnh_expired)
+                    )
+                ) {
+
+                    var fullName = editTextFullName.text.toString()
+                    var birthDate = dataFormat.parse(editTextBirthDate.text.toString()).time
+                    var cnhNumber = editTextCnhNumber.text.toString()
+                    var cnhDate = dataFormat.parse(editTextCnhDate.text.toString()).time
+                    var cnhExpired = dataFormat.parse(editTextCnhExpired.text.toString()).time
+                    var telephone = editTextTelephone.text.toString()
+
+                    val objeto =
+                        Cnh(
+                            fullName,
+                            birthDate,
+                            cnhNumber,
+                            cnhDate,
+                            cnhExpired,
+                            telephone
+                        )
+
+                    if (editTextCnhNumber.isEnabled) {
+                        mainViewModel.insert(objeto)
+                    } else {
+                        mainViewModel.update(
+                            objeto.cnh_number,
+                            objeto.full_name,
+                            objeto.birthdate,
+                            objeto.cnh_date,
+                            objeto.cnh_expired,
+                            objeto.telephone
+                        )
+                    }
+
+                    finish()
                 }
-
-                finish()
             }
+
         }
     }
 
@@ -155,72 +171,33 @@ class NewCnhActivity : AppCompatActivity() {
         return true
     }
 
-    fun setDateEditText(fieldDate: EditText) {
+    fun validDate(campo: EditText, name: String): Boolean {
 
-        fieldDate.addTextChangedListener(object : TextWatcher {
+        if (!isValidDate(campo.text.toString())) {
+            Toast.makeText(
+                applicationContext,
+                "${name} ${resources.getString(R.string.screen_new_cnh_message_message_invalid)}",
+                Toast.LENGTH_LONG
+            )
+                .show()
+            return false
+        }
 
-            private var current = ""
-            private val ddmmyyyy = "DDMMYYYY"
-            private val cal = Calendar.getInstance()
+        return true
+    }
 
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (p0.toString() != current) {
-                    var clean = p0.toString().replace("[^\\d.]|\\.".toRegex(), "")
-                    val cleanC = current.replace("[^\\d.]|\\.", "")
+    fun isValidDate(value: String): Boolean {
 
-                    val cl = clean.length
-                    var sel = cl
-                    var i = 2
-                    while (i <= cl && i < 6) {
-                        sel++
-                        i += 2
-                    }
-                    //Fix for pressing delete next to a forward slash
-                    if (clean == cleanC) sel--
+        val df = SimpleDateFormat("dd/MM/yyyy")
+        var isValid = true
 
-                    if (clean.length < 8) {
-                        clean = clean + ddmmyyyy.substring(clean.length)
-                    } else {
-                        //This part makes sure that when we finish entering numbers
-                        //the date is correct, fixing it otherwise
-                        var day = Integer.parseInt(clean.substring(0, 2))
-                        var mon = Integer.parseInt(clean.substring(2, 4))
-                        var year = Integer.parseInt(clean.substring(4, 8))
+        try {
+            val date: Date = df.parse(value)
+        } catch (e: ParseException) {
+            isValid = false
+        }
 
-                        mon = if (mon < 1) 1 else if (mon > 12) 12 else mon
-                        cal.set(Calendar.MONTH, mon - 1)
-                        year = if (year < 1900) 1900 else if (year > 2100) 2100 else year
-                        cal.set(Calendar.YEAR, year)
-                        // ^ first set year for the line below to work correctly
-                        //with leap years - otherwise, date e.g. 29/02/2012
-                        //would be automatically corrected to 28/02/2012
-
-                        day = if (day > cal.getActualMaximum(Calendar.DATE)) cal.getActualMaximum(
-                            Calendar.DATE
-                        ) else day
-                        clean = String.format("%02d%02d%02d", day, mon, year)
-                    }
-
-                    clean = String.format(
-                        "%s/%s/%s", clean.substring(0, 2),
-                        clean.substring(2, 4),
-                        clean.substring(4, 8)
-                    )
-
-                    sel = if (sel < 0) 0 else sel
-                    current = clean
-                    fieldDate.setText(current)
-                    fieldDate.setSelection(if (sel < current.count()) sel else current.count())
-                }
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(p0: Editable) {
-
-            }
-        })
+        return isValid
     }
 
     companion object {

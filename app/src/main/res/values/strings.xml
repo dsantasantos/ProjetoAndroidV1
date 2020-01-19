@@ -14,7 +14,8 @@
     <string name="screen_new_cnh_expired">Expiration Date</string>
     <string name="screen_new_cnh_telephone">Telephone Number</string>
     <string name="screen_new_cnh_message_field_empty">is empty</string>
-    
+    <string name="screen_new_cnh_message_message_invalid">is invalid</string>
+
     <!-- =============  SCREEN NEW USER ============== -->
     <string name="screen_new_user_title">New User</string>
     <string name="screen_new_user_email">E-mail</string>
